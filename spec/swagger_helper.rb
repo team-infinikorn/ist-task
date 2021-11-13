@@ -87,6 +87,38 @@ RSpec.configure do |config|
               mobile: '+33 4 55 44 33'
             }
           }
+        },
+        queue: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            priority: { type: :string }
+          },
+          required: %w[name priority],
+          example: {
+            queue: {
+              name: 'Critical Queue',
+              priority: 'critical'
+            }
+          }
+        },
+        job: {
+          type: :object,
+          properties: {
+            name: { type: :string },
+            priority: { type: :string },
+            job_klass: { type: :string },
+            arguments: { type: :array }
+          },
+          required: %w[name priority job_klass],
+          example: {
+            job: {
+              name: 'Queue Job',
+              priority: 'high',
+              job_klass: 'StoreMovies',
+              arguments: %w[filepath_to_fetch_titles_from]
+            }
+          }
         }
       },
       securityDefinitions: {

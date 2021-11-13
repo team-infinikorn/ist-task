@@ -37,6 +37,7 @@ gem 'uglifier', '~> 4.1.20'
 gem 'webpacker'
 gem 'jwt'
 gem 'name_of_person'
+gem 'interactor-rails', '~> 2.0'
 
 # Not Supported for Rails 6
 # no public release yet for rails 6. need to install gem from github branch development.
@@ -55,6 +56,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rswag-specs'
+  gem 'faker', require: true
 end
 
 group :development do

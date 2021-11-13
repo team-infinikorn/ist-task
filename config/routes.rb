@@ -15,6 +15,10 @@ Rails.application.routes.draw do
       scope :accounts do
         get 'profile' => 'accounts#profile'
       end
+
+      resources :job_queues, only: %i[index create], controller: 'queues', path: 'queues' do
+        resources :jobs, only: %i[index create]
+      end
     end
   end
 end

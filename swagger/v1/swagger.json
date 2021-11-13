@@ -33,6 +33,158 @@
         }
       }
     },
+    "/queues/{job_queue_id}/jobs": {
+      "get": {
+        "summary": "List Jobs",
+        "tags": [
+          "Jobs"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "jobs#index",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "job_queue_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully list jobs"
+          },
+          "401": {
+            "description": "unauthorized"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Job",
+        "tags": [
+          "Jobs"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "jobs#create",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "job_queue_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "job",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/job"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully create job"
+          },
+          "422": {
+            "description": "unprocessable entity"
+          },
+          "401": {
+            "description": "unauthorized"
+          }
+        }
+      }
+    },
+    "/queues": {
+      "get": {
+        "summary": "List Queues",
+        "tags": [
+          "Queues"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "queues#index",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully list queues"
+          },
+          "401": {
+            "description": "unauthorized"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Queue",
+        "tags": [
+          "Queues"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "queues#create",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "queue",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/queue"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully create queue"
+          },
+          "422": {
+            "description": "unprocessable entity"
+          },
+          "401": {
+            "description": "unauthorized"
+          }
+        }
+      }
+    },
     "/members": {
       "post": {
         "summary": "Member Registration",
@@ -190,6 +342,59 @@
           "password": "Abcd#1234",
           "name": "Samuel Black",
           "mobile": "+33 4 55 44 33"
+        }
+      }
+    },
+    "queue": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "priority"
+      ],
+      "example": {
+        "queue": {
+          "name": "Critical Queue",
+          "priority": "critical"
+        }
+      }
+    },
+    "job": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "job_klass": {
+          "type": "string"
+        },
+        "arguments": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "priority",
+        "job_klass"
+      ],
+      "example": {
+        "job": {
+          "name": "Queue Job",
+          "priority": "high",
+          "job_klass": "StoreMovies",
+          "arguments": [
+            "filepath_to_fetch_titles_from"
+          ]
         }
       }
     }

@@ -1,11 +1,11 @@
 module Api
   module V1
     class SecureController < ApiController
-      before_action :authenticate_member
+      before_action :authenticate_member!
 
       private
 
-      def authenticate_member
+      def authenticate_member!
         return head :unauthorized if request.headers['Authorization'].blank?
 
         authenticate_or_request_with_http_token do |token|
@@ -17,16 +17,8 @@ module Api
         end
       end
 
-      def authenticate_member!(_options = {})
-        head :unauthorized unless signed_in?
-      end
-
       def current_member
         @current_member || Member.find(@current_member_id)
-      end
-
-      def signed_in?
-        @current_member_id.present?
       end
     end
   end
