@@ -1,0 +1,207 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API V1",
+    "version": "v1"
+  },
+  "basePath": "/api/v1",
+  "paths": {
+    "/accounts/profile": {
+      "get": {
+        "summary": "Member Profile",
+        "tags": [
+          "Accounts"
+        ],
+        "security": [
+          {
+            "bearerAuth": [
+
+            ]
+          }
+        ],
+        "operationId": "profile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully return profile"
+          }
+        }
+      }
+    },
+    "/members": {
+      "post": {
+        "summary": "Member Registration",
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "registration",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sign_up",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/sign_up"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfull Registration"
+          }
+        }
+      }
+    },
+    "/members/login": {
+      "post": {
+        "summary": "Member Login",
+        "tags": [
+          "Accounts"
+        ],
+        "operationId": "login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "sign_in",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfull Login"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ],
+      "example": {
+        "sign_in": {
+          "email": "sample@email.com",
+          "password": "Abcd#1234"
+        }
+      }
+    },
+    "account_change_password": {
+      "type": "object",
+      "properties": {
+        "old_password": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "confirm_password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "first_name",
+        "last_name",
+        "email",
+        "mobile"
+      ],
+      "example": {
+        "account": {
+          "old_password": "P4ssw0rd#!",
+          "password": "w0rdP4ss#!",
+          "password_confirmation": "w0rdP4ss#!"
+        }
+      }
+    },
+    "account_update": {
+      "type": "object",
+      "properties": {
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "account": {
+          "first_name": "Samuel",
+          "last_name": "Black",
+          "mobile": "+33 4 55 44 33"
+        }
+      }
+    },
+    "sign_up": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password",
+        "name",
+        "mobile"
+      ],
+      "example": {
+        "sign_up": {
+          "email": "sample@email.com",
+          "password": "Abcd#1234",
+          "name": "Samuel Black",
+          "mobile": "+33 4 55 44 33"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "in": "header",
+      "description": "JWT Authorization header using the Bearer scheme. Example: Authorization: Bearer {token}",
+      "name": "Authorization"
+    }
+  }
+}
