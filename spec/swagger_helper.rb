@@ -115,8 +115,8 @@ RSpec.configure do |config|
             job: {
               name: 'Queue Job',
               priority: 'high',
-              job_klass: 'StoreMovies',
-              arguments: %w[filepath_to_fetch_titles_from]
+              job_klass: 'StoreMoviesJob',
+              arguments: %w[data_sets/movies.yml]
             }
           }
         }

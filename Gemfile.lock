@@ -117,6 +117,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
+    connection_pool (2.2.5)
     console_logger (1.0.0)
     crass (1.0.6)
     cucumber (5.3.0)
@@ -175,9 +176,12 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    e2mmap (0.1.0)
     email_validator (2.2.3)
       activemodel
     erubi (1.10.0)
+    et-orbi (1.2.4)
+      tzinfo
     execjs (2.8.1)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -202,6 +206,9 @@ GEM
     ffi (1.15.3)
     foreman (0.87.2)
     forgery (0.6.0)
+    fugit (1.5.0)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     httparty (0.18.1)
@@ -297,6 +304,7 @@ GEM
       thread_safe
     public_suffix (4.0.6)
     puma (3.12.6)
+    raabro (1.4.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-attack (6.5.0)
@@ -344,6 +352,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.3.1)
     regexp_parser (2.1.1)
     rename (1.0.6)
       activesupport
@@ -405,6 +414,8 @@ GEM
     ruby2_keywords (0.0.4)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
+    rufus-scheduler (3.7.0)
+      fugit (~> 1.1, >= 1.1.6)
     rugged (1.1.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -425,6 +436,17 @@ GEM
     semantic_range (3.0.0)
     shoulda-matchers (4.4.1)
       activesupport (>= 4.2.0)
+    sidekiq (6.2.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sidekiq-scheduler (3.1.0)
+      e2mmap
+      redis (>= 3, < 5)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 3)
+      thwait
+      tilt (>= 1.4.0)
     simple_hl7 (1.0.2)
     simplecov (0.17.0)
       docile (~> 1.1)
@@ -452,6 +474,8 @@ GEM
       ffi (~> 1.1)
     thor (1.1.0)
     thread_safe (0.3.6)
+    thwait (0.2.0)
+      e2mmap
     tilt (2.0.10)
     toastr-rails (1.0.3)
       railties (>= 3.1.0)
@@ -538,6 +562,8 @@ DEPENDENCIES
   sass-rails (~> 6.0)
   selenium-webdriver
   shoulda-matchers
+  sidekiq
+  sidekiq-scheduler
   simple_hl7
   simplecov (= 0.17.0)
   spring

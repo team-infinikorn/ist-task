@@ -1,0 +1,9 @@
+:schedule:
+  CriticalJobsWorker: { every: '10s' }
+  HighJobsWorker: { every: '20s' }
+  LowJobsWorker: { every: '30s' }
+
+:queues:
+  - critical
+  - high
+  - low

@@ -4,7 +4,7 @@ module Api
       before_action :set_queue
 
       def index
-        @jobs = Job
+        @jobs = @queue.jobs
       end
 
       def create

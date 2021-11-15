@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_124542) do
+ActiveRecord::Schema.define(version: 2021_11_13_163426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_124542) do
     t.integer "status", default: 0, null: false
     t.integer "priority", default: 0, null: false
     t.jsonb "meta", default: {}, null: false
-    t.bigint "job_queue_id", null: false
+    t.bigint "job_queue_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["job_queue_id"], name: "index_jobs_on_job_queue_id"
@@ -77,6 +77,12 @@ ActiveRecord::Schema.define(version: 2021_11_13_124542) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "versions", force: :cascade do |t|
     t.string "item_type", null: false
     t.bigint "item_id", null: false
@@ -89,5 +95,4 @@ ActiveRecord::Schema.define(version: 2021_11_13_124542) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "jobs", "job_queues"
 end

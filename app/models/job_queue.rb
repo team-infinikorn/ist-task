@@ -6,4 +6,6 @@ class JobQueue < ApplicationRecord
   enum priority: { low: 0, high: 1, critical: 2 }
 
   validates :name, :priority, presence: true
+
+  scope :by_priority, -> { order(priority: :desc) }
 end

@@ -16,6 +16,9 @@ module IstTask
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Use sidekiq for background job processing
+    config.active_job.queue_adapter = :sidekiq
+
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.action_controller.default_protect_from_forgery = true

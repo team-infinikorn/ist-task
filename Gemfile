@@ -38,6 +38,8 @@ gem 'webpacker'
 gem 'jwt'
 gem 'name_of_person'
 gem 'interactor-rails', '~> 2.0'
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 
 # Not Supported for Rails 6
 # no public release yet for rails 6. need to install gem from github branch development.
