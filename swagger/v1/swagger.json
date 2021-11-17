@@ -239,6 +239,9 @@
         "responses": {
           "200": {
             "description": "Successfull Login"
+          },
+          "422": {
+            "description": "Successfull Login"
           }
         }
       }
@@ -391,9 +394,9 @@
         "job": {
           "name": "Queue Job",
           "priority": "high",
-          "job_klass": "StoreMovies",
+          "job_klass": "StoreMoviesJob",
           "arguments": [
-            "filepath_to_fetch_titles_from"
+            "data_sets/movies.yml"
           ]
         }
       }
