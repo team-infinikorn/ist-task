@@ -9,6 +9,7 @@ unless ARGV.any? { |e| e =~ /Rswag::Specs::SwaggerFormatter/ }
     add_filter 'vendor/'
     add_filter 'lib/external_helpers/'
     add_filter 'lib/error/'
+    add_filter 'app/jobs/display_current_time_job.rb'
 
     minimum_coverage 75 unless ENV['CIRCLECI']
   end

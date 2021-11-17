@@ -27,6 +27,19 @@ describe 'Login API', type: :request, swagger_doc: 'v1/swagger.json' do
             expect(json_response['member']['auth_token'].present?).to be_truthy
           end
         end
+
+        response '422', 'Successfull Login' do
+          let(:sign_in) do
+            {
+              sign_in: {
+                email: 'wrong@email.com',
+                password: 'wrong_password'
+              }
+            }
+          end
+
+          run_test!
+        end
       end
     end
   end

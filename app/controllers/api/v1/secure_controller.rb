@@ -13,7 +13,9 @@ module Api
 
           @current_member_id = jwt_payload['id']
         rescue JWT::ExpiredSignature, JWT::VerificationError, JWT::DecodeError
-          head :unauthorized
+          # :nocov:
+            head :unauthorized
+          # :nocov:
         end
       end
 
