@@ -10,20 +10,32 @@ To get up and running:
 
 - Clone the repo to your local machine:
 
-SSH
-
-git clone git@github.com:team-infinikorn/ist-task.git
-
-HTTPS
+# HTTPS
 
 git clone https://github.com/team-infinikorn/ist-task.git
 
-- Install dependencies
+# ENV Variables
 
-bundle install
-gem install foreman
+  Create `.env.development.local` & `.env.test.local` file and add `SECRET_KEY_BASE` ENV variable with any secret key e.g. SecureRandom.hex(12)
 
-- Prepare DB
+# Install dependencies
 
-rails db:create
-rails db:migrate
+  `bundle install`
+
+# Prepare DB
+
+  `rails db:create`
+  `rails db:migrate`
+
+# Swagger DOCS
+- Visit `/api-docs/` to view swagger docs.
+- run `rake rswag` to update swagger docs.
+
+# Rspec Tests
+
+run `rspec`
+
+## Staging Site
+
+- Go to `https://ist-task.herokuapp.com/api-docs/index.html` to view swagger docs on heroku staging instance.
+- Note: Background jobs are not running on Heroku as they are not part of free plan.
