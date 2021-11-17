@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Worker to run dynamic jobs from queues
+# Worker to run high jobs from queues
 #
 class HighJobsWorker
   include Sidekiq::Worker

@@ -50,6 +50,7 @@ gem 'paper_trail'
 gem 'rotp'
 gem 'ruby-hl7'
 gem 'simple_hl7'
+gem 'simplecov', '0.17.0', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -84,6 +85,5 @@ group :test do
   gem 'rubocop-rspec'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
-  gem 'simplecov', '0.17.0', require: false
   # gem 'rubocop-linter-action'
 end

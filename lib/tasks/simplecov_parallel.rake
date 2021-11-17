@@ -6,7 +6,7 @@ if Rails.env.test?
   namespace :simplecov do
     desc 'merge_results'
     task report_coverage: :environment do
-      SimpleCovHelper.report_coverage
+      ExternalHelpers::SimplecovHelper.report_coverage
     end
   end
 end

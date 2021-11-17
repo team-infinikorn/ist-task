@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# Worker to run dynamic jobs from queues
+# Worker to run critical jobs from queues
 #
-class RunDynamicJobsWorker
+class CriticalJobsWorker
   include Sidekiq::Worker
 
   sidekiq_options queue: :critical
